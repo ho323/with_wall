@@ -1,16 +1,30 @@
-# with_wall
+# 벽과함께
+**클라이밍 SNS 애플리케이션**  
+전국의 클라이밍 센터의 정보와 유저들의 영상을 볼 수 있는 애플리케이션입니다.
 
-벽과함께
+## 개발환경
+- Flutter (Android, iOS)
+- Firebase 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 주요 기능:
+- 회원가입/로그인
+- 프로필
+    - 개인정보 (하이, 리치)
+    - 프로필 사진
+    - 소개
+    - 내 정보 수정
+- 홈 화면
+    - 클라이밍 센터 리스트
+    - 홈 화면 내 검색
+        - 클라이밍 센터 검색
+        - 사용자 및 해쉬태그 검색
+- 클라이밍 센터 정보
+    - 센터 별 피드
+- 피드
+    - 게시글 업로드
+        - 위치 등록
+        - 해쉬태그
+    - 좋아요, 댓글
+- 유저 차단/숨김
+- 유저 차단/숨김 해제
+- 캘린더 일지
