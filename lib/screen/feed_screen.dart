@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:with_wall/component/feed.dart';
 
 class FeedScreen extends StatelessWidget {
-  final List<int> numbers = List.generate(20, (index) => index);
+  final List<int> numbers = List.generate(4, (index) => index);
 
   FeedScreen({Key? key}) : super(key: key);
 
@@ -21,8 +21,10 @@ class FeedScreen extends StatelessWidget {
                 child: Column(
                   children: numbers
                       .map(
-                        (e) => Feed(),
-                  )
+                        (e) => Feed(
+                          postNumber: e,
+                        ),
+                      )
                       .toList(),
                 ),
               ),
