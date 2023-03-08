@@ -25,27 +25,39 @@ class _HomeScreenState extends State<HomeScreen> {
         ProfileScreen(),
       ][tab],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: PRIMARY_COLOR,
         onTap: (i) {
           setState(() {
             tab = i;
           });
         },
+        currentIndex: tab,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            backgroundColor: PRIMARY_COLOR,
+            icon: Icon(
+              Icons.home,
+            ),
             label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.place),
+            backgroundColor: PRIMARY_COLOR,
+            icon: Icon(
+              Icons.place,
+            ),
             label: 'place',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
+            backgroundColor: PRIMARY_COLOR,
+            icon: Icon(
+              Icons.calendar_month,
+            ),
             label: 'calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_2),
+            backgroundColor: PRIMARY_COLOR,
+            icon: Icon(
+              Icons.person_2,
+            ),
             label: 'profile',
           ),
         ],
