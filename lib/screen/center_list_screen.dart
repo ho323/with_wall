@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:with_wall/component/search.dart';
 import 'package:with_wall/const/colors.dart';
+import 'package:with_wall/component/center_info.dart';
 
 class CenterListScreen extends StatelessWidget {
   final List<int> numbers = List.generate(100, (index) => index);
@@ -24,9 +25,10 @@ class CenterListScreen extends StatelessWidget {
                 child: Column(
                   children: numbers
                       .map(
-                        (e) => renderCenter(e),
-                      )
-                      .toList(),
+                        (e) => CenterInfo(
+                          centerNumber: e,
+                        ),
+                      ).toList(),
                 ),
               ),
             ),
