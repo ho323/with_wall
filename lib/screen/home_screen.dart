@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:with_wall/const/colors.dart';
+import 'package:with_wall/screen/add_post.dart';
 import 'package:with_wall/screen/caledar_screen.dart';
 import 'package:with_wall/screen/center_list_screen.dart';
 import 'package:with_wall/screen/feed_screen.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: [
         FeedScreen(),
         CenterListScreen(),
+        AddPostScreen(),
         CalendarScreen(),
         ProfileScreen(),
       ][tab],
@@ -45,6 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
               Icons.place,
             ),
             label: 'place',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: PRIMARY_COLOR,
+            icon: Icon(
+              Icons.add_circle_outline,
+            ),
+            label: 'add',
           ),
           BottomNavigationBarItem(
             backgroundColor: PRIMARY_COLOR,
