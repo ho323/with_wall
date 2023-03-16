@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'package:with_wall/const/colors.dart';
-import 'package:with_wall/screen/post_screen.dart';
 
-class Feed extends StatelessWidget {
+class Feed extends StatefulWidget {
   final int postNumber;
 
   const Feed({
@@ -11,95 +11,182 @@ class Feed extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<Feed> createState() => _FeedState();
+}
+
+class _FeedState extends State<Feed> {
+  VideoPlayerController? _controller;
+  Future<void>? _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    _controller = VideoPlayerController.asset(
+        'asset/vid/sample_${widget.postNumber}.mp4');
+    _initializeVideoPlayerFuture = _controller!.initialize();
+    _controller!.setLooping(true);
+    super.initState();
+    // Add code after super
+  }
+
+  @override
+  void dispose() {
+    _controller!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => PostScreen(
-              postNumber: postNumber,
-            ),
+    return Container(
+      padding: EdgeInsets.all(20),
+      height: 400,
+      decoration: BoxDecoration(
+        border: Border.symmetric(
+          horizontal: BorderSide(
+            color: Colors.grey,
+            width: 0.5,
           ),
-        );
-      },
-      child: Container(
-        padding: EdgeInsets.all(20),
-        height: 400,
-        // decoration: BoxDecoration(
-        //   border: Border.all(
-        //     color: PRIMARY_COLOR,
-        //   ),
-        //   color: Colors.white,
-        // ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    RenderCircle(),
-                    Text('닉네임'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.place, size: 15),
-                    Text('센터 위치'),
-                    SizedBox(width: 30),
-                  ],
-                ),
-              ],
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              color: PRIMARY_COLOR,
-              child: Center(
-                child: Text('썸네일'),
-              ),
-            ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text('좋아요'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        RenderCircle(),
-                        RenderCircle(),
-                        RenderCircle(),
-                        SizedBox(width: 30),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
         ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _RenderTop(),
+          SizedBox(height: 5),
+          _RenderVideo(context),
+          SizedBox(height: 5),
+          _RenderBottom(),
+        ],
       ),
     );
   }
 
-  Widget RenderCircle() {
+  Widget _RenderTop() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.red,
-            shape: BoxShape.circle,
+        GestureDetector(
+          onTap: () {
+            print('유저 프로필 스크린 이동');
+          },
+          child: Row(
+            children: [
+              Icon(Icons.person),
+              Text('닉네임'),
+            ],
           ),
-          width: 20.0,
-          height: 20.0,
         ),
-        SizedBox(width: 5),
+        GestureDetector(
+          onTap: () {
+            print('센터 정보 스크린 이동');
+          },
+          child: Row(
+            children: [
+              Icon(Icons.place, size: 15),
+              Text('센터 위치'),
+              SizedBox(width: 10),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _RenderVideo(context) {
+    bool isPlaying = false;
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 270,
+      child: FutureBuilder(
+        future: _initializeVideoPlayerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return GestureDetector(
+              onTap: () {
+                if(!isPlaying){
+                  _controller!.play();
+                  isPlaying = true;
+                } else {
+                  _controller!.pause();
+                  isPlaying = false;
+                }
+              },
+              child: AspectRatio(
+                aspectRatio: _controller!.value.aspectRatio,
+                child: VideoPlayer(_controller!),
+              ),
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _RenderBottom() {
+    bool isFavorite = false;
+    Icon favoriteIcon = Icon(
+      Icons.favorite_border,
+      color: Colors.red,
+    );
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    print('좋아요 클릭');
+                    setState(() {
+                      if(!isFavorite) {
+                        isFavorite = false;
+                      } else {
+                        isFavorite = true;
+                      }
+                    });
+
+                  },
+                  child: favoriteIcon = Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: Colors.red,
+                  ),
+                ),
+                Text(' 좋아요 32개'),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.circle,
+                  color: Colors.blue,
+                ),
+                Icon(
+                  Icons.circle,
+                  color: Colors.yellow,
+                ),
+                Icon(
+                  Icons.circle,
+                  color: Colors.green,
+                ),
+                SizedBox(width: 10),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(height: 5),
+        GestureDetector(
+          onTap: () {
+            print('댓글 창 띄우기');
+          },
+          child: Row(
+            children: [
+              Icon(Icons.list),
+              Text(' 댓글 3개'),
+            ],
+          ),
+        ),
       ],
     );
   }
