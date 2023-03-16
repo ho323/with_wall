@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:with_wall/const/colors.dart';
-import 'package:with_wall/screen/add_post.dart';
+import 'package:with_wall/screen/add_post_screen.dart';
 import 'package:with_wall/screen/caledar_screen.dart';
 import 'package:with_wall/screen/center_list_screen.dart';
 import 'package:with_wall/screen/feed_screen.dart';
@@ -19,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: renderFloatingActionButton(),
       body: [
         FeedScreen(),
         CenterListScreen(),
-        AddPostScreen(),
         CalendarScreen(),
         ProfileScreen(),
       ][tab],
@@ -33,44 +33,49 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         currentIndex: tab,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             backgroundColor: PRIMARY_COLOR,
             icon: Icon(
               Icons.home,
             ),
-            label: 'home',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             backgroundColor: PRIMARY_COLOR,
             icon: Icon(
               Icons.place,
             ),
-            label: 'place',
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: PRIMARY_COLOR,
-            icon: Icon(
-              Icons.add_circle_outline,
-            ),
-            label: 'add',
+            label: 'Place',
           ),
           BottomNavigationBarItem(
             backgroundColor: PRIMARY_COLOR,
             icon: Icon(
               Icons.calendar_month,
             ),
-            label: 'calendar',
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
             backgroundColor: PRIMARY_COLOR,
             icon: Icon(
               Icons.person_2,
             ),
-            label: 'profile',
+            label: 'Profile',
           ),
         ],
       ),
+    );
+  }
+
+  Widget renderFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) => AddPostScreen())
+        );
+      },
+      backgroundColor: PRIMARY_COLOR,
+      child: Icon(Icons.add),
     );
   }
 }

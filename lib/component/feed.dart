@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:with_wall/const/colors.dart';
+import 'package:with_wall/component/comment.dart';
 
 class Feed extends StatefulWidget {
   final int postNumber;
@@ -75,17 +75,11 @@ class _FeedState extends State<Feed> {
             ],
           ),
         ),
-        GestureDetector(
-          onTap: () {
-            print('센터 정보 스크린 이동');
-          },
-          child: Row(
-            children: [
-              Icon(Icons.place, size: 15),
-              Text('센터 위치'),
-              SizedBox(width: 10),
-            ],
-          ),
+        Row(
+          children: [
+            Text('2023년 3월 12일'),
+            SizedBox(width: 10),
+          ],
         ),
       ],
     );
@@ -102,7 +96,7 @@ class _FeedState extends State<Feed> {
           if (snapshot.connectionState == ConnectionState.done) {
             return GestureDetector(
               onTap: () {
-                if(!isPlaying){
+                if (!isPlaying) {
                   _controller!.play();
                   isPlaying = true;
                 } else {
@@ -125,10 +119,6 @@ class _FeedState extends State<Feed> {
 
   Widget _RenderBottom() {
     bool isFavorite = false;
-    Icon favoriteIcon = Icon(
-      Icons.favorite_border,
-      color: Colors.red,
-    );
     return Column(
       children: [
         Row(
@@ -140,15 +130,10 @@ class _FeedState extends State<Feed> {
                   onTap: () {
                     print('좋아요 클릭');
                     setState(() {
-                      if(!isFavorite) {
-                        isFavorite = false;
-                      } else {
-                        isFavorite = true;
-                      }
+                      isFavorite = !isFavorite;
                     });
-
                   },
-                  child: favoriteIcon = Icon(
+                  child: Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: Colors.red,
                   ),
@@ -156,16 +141,27 @@ class _FeedState extends State<Feed> {
                 Text(' 좋아요 32개'),
               ],
             ),
+            GestureDetector(
+              onTap: () {
+                print('센터 정보 스크린 이동');
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.place, size: 15),
+                  Text('센터 위치'),
+                  SizedBox(width: 10),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Comment(),
             Row(
               children: [
-                Icon(
-                  Icons.circle,
-                  color: Colors.blue,
-                ),
-                Icon(
-                  Icons.circle,
-                  color: Colors.yellow,
-                ),
                 Icon(
                   Icons.circle,
                   color: Colors.green,
@@ -174,18 +170,6 @@ class _FeedState extends State<Feed> {
               ],
             ),
           ],
-        ),
-        SizedBox(height: 5),
-        GestureDetector(
-          onTap: () {
-            print('댓글 창 띄우기');
-          },
-          child: Row(
-            children: [
-              Icon(Icons.list),
-              Text(' 댓글 3개'),
-            ],
-          ),
         ),
       ],
     );
