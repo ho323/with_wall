@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		xKdGDJ5acLohXf+/0NBj8V6/F18=
+		Ad2qP2tOixP7lA1Up3ZyJQwQF1k=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		b6/r0BS3r02DnT9Q9o1KCXPQf2U=
+		RjzhbRrfyRt/J+wox2JOXpUQUig=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		AFlRZjK+FkfKNgW4RU7AB8r5nlY=
+		8zSYRi2cYMUkoXzjTKDvXWXl2+o=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -66,7 +66,11 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		wDH5D2bRg/hlIvlEWVSBPdmDqDY=
+		AvHci1b8wZ4sHXibMRcHigRI/dY=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_0.mp4</key>
+		<data>
+		zw7pt6H0SkAlOSfljlRWXMyBneY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_1.mp4</key>
 		<data>
@@ -80,10 +84,6 @@
 		<data>
 		y7TZbgGCbip2kuOE8cEa/BJR0sY=
 		</data>
-		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_4.mp4</key>
-		<data>
-		zw7pt6H0SkAlOSfljlRWXMyBneY=
-		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -94,7 +94,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		y6yhpoBwwXY7AjH+y967ElJClho=
+		mKqQTvkOago/bsOJj8RGmCE4snY=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -192,9 +192,21 @@
 		<data>
 		iqxdhxDOeG6GKBcMhgGCL00SLGw=
 		</data>
+		<key>Frameworks/video_player_avfoundation.framework/Info.plist</key>
+		<data>
+		d5Y1b16jBzVB68+xIVA+D58ajr8=
+		</data>
+		<key>Frameworks/video_player_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<data>
+		C2xcKerZV9siS5ZjKZjzZfG8t3U=
+		</data>
+		<key>Frameworks/video_player_avfoundation.framework/video_player_avfoundation</key>
+		<data>
+		vZJF+ojnHzfUj13GkU9lEpZmdUQ=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		wliBn/R4430aakwcvYo0jlGlwwI=
+		3JKNM+OxLmqsddKzlm9HF4F9EQU=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -277,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MqQ2ryvZLbicow0t8xPnWROnK/W8U6CF9RIud//SbTA=
+			vUKf6tnCK9CGm9ROCuTi7qhirR/4oaM0gS+/tD9uN6s=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -291,14 +303,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Km26FCfbTe3iTPjYND6p9QZcqrPCqL4ajeqAUocNk1s=
+			VczabekxtM/gH9HCOxSzSNvnCcYEELB4knqoKCKg1rc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nP1i5QrPLaORzaEJfL7RYMMb6SnMH9SqzAZ0ycSqlxY=
+			iasLn8gIYLQhXaydewmZa7umtQGvYRCTDZpT3yVXlyI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -312,7 +324,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PpxwDKta79EyoX5iSFRt4iNU/WE97quqaG2Nz+pmiAs=
+			6sIlGtiXLAKvxB9Awt+knGeZKk3uZTJFUpBzIeYmt2E=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_0.mp4</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			w6w8kMH65fjdEBB7pIsdb9hZ5O5x+Xhx8o1mDXb+op4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_1.mp4</key>
@@ -336,13 +355,6 @@
 			MaCeh97c9miZKKR4H5ASPhmd8HWYJ8J6UI9qrm84JPc=
 			</data>
 		</dict>
-		<key>Frameworks/App.framework/flutter_assets/asset/vid/sample_4.mp4</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			w6w8kMH65fjdEBB7pIsdb9hZ5O5x+Xhx8o1mDXb+op4=
-			</data>
-		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -361,7 +373,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xXI19A0TrBT5WhRMsdOUvbN52yxabsmqP60HDG/FySU=
+			GN2tqzlwZ+/hvv6djvQpFCsoTdoFK/Bh4mot885Pph4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -530,6 +542,27 @@
 			<key>hash2</key>
 			<data>
 			d80FTlJMKYsTn7JmRt/E1O9oOh+k9tF0xR10Q3ZrKn4=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1qm8NPYdZ+yWIjgTXworuocAO/ulBhF+N7ncqm7fTOo=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6HA9Wk+ZYi2sPOS06Hg6X9K8vYgReWvpGu2k75/PtOw=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/video_player_avfoundation</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TxuWPawSC9rktIXc6UbGAW/EGQulAbuHSyC5jvtu0aY=
 			</data>
 		</dict>
 	</dict>
