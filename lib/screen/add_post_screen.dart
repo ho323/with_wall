@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:with_wall/component/new_video.dart';
 import 'package:with_wall/const/colors.dart';
 
 class AddPostScreen extends StatelessWidget {
@@ -18,12 +19,12 @@ class AddPostScreen extends StatelessWidget {
                 '운동 기록',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
               SizedBox(height: 20),
-              _AddNewVideo(),
-              SizedBox(height: 20),
+              AddNewVideo(),
+              SizedBox(height: 10),
               Row(
                 children: [
                   Icon(Icons.place),
@@ -36,12 +37,14 @@ class AddPostScreen extends StatelessWidget {
                   Text('난이도 선택'),
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Container(
                 height: 150,
-                color: PRIMARY_COLOR,
+                decoration: BoxDecoration(
+                  border: Border.all(color: PRIMARY_COLOR, width: 3),
+                ),
                 child: Center(
-                  child: Text('영상 등록'),
+                  child: Text('FormField()'),
                 ),
               ),
               SizedBox(height: 20),
@@ -71,16 +74,6 @@ class AddPostScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _AddNewVideo() {
-    return Container(
-      height: 270,
-      color: PRIMARY_COLOR,
-      child: Center(
-        child: Text('영상 등록'),
       ),
     );
   }
