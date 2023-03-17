@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:with_wall/component/feed.dart';
 
 class FeedScreen extends StatelessWidget {
-  final List<int> numbers = List.generate(4, (index) => index);
+  final List<int> numbers = List.generate(8, (index) => index);
 
   FeedScreen({Key? key}) : super(key: key);
 
@@ -14,10 +14,10 @@ class FeedScreen extends StatelessWidget {
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
-                await Future.delayed(Duration(seconds: 1));
+                await Future.delayed(const Duration(seconds: 1));
               },
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
                   children: numbers
                       .map(

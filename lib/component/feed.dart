@@ -15,22 +15,22 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
-  VideoPlayerController? _controller;
+  VideoPlayerController? controller;
   Future<void>? _initializeVideoPlayerFuture;
+  bool isFavorite = false;
 
   @override
   void initState() {
-    _controller = VideoPlayerController.asset(
-        'asset/vid/sample_${widget.postNumber}.mp4');
-    _initializeVideoPlayerFuture = _controller!.initialize();
-    _controller!.setLooping(true);
     super.initState();
-    // Add code after super
+    controller = VideoPlayerController.asset(
+        'asset/vid/sample_${widget.postNumber}.mp4');
+    _initializeVideoPlayerFuture = controller!.initialize();
+    controller!.setLooping(true);
   }
 
   @override
   void dispose() {
-    _controller!.dispose();
+    controller!.dispose();
     super.dispose();
   }
 
@@ -97,20 +97,20 @@ class _FeedState extends State<Feed> {
             return GestureDetector(
               onTap: () {
                 if (!isPlaying) {
-                  _controller!.play();
+                  controller!.play();
                   isPlaying = true;
                 } else {
-                  _controller!.pause();
+                  controller!.pause();
                   isPlaying = false;
                 }
               },
               child: AspectRatio(
-                aspectRatio: _controller!.value.aspectRatio,
-                child: VideoPlayer(_controller!),
+                aspectRatio: controller!.value.aspectRatio,
+                child: VideoPlayer(controller!),
               ),
             );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -118,7 +118,6 @@ class _FeedState extends State<Feed> {
   }
 
   Widget _RenderBottom() {
-    bool isFavorite = false;
     return Column(
       children: [
         Row(
