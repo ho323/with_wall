@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   video_player: ^2.6.0
   image_picker: ^0.8.7
+  firebase_core: ^2.8.0
+  cloud_firestore: ^4.4.5
+  firebase_storage: ^11.0.16
+  firebase_database: ^10.0.16
 
 
 dev_dependencies:

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:with_wall/component/feed.dart';
 
-class FeedScreen extends StatelessWidget {
-  final List<int> numbers = List.generate(8, (index) => index);
-
+class FeedScreen extends StatefulWidget {
   FeedScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FeedScreen> createState() => _FeedScreenState();
+}
+
+class _FeedScreenState extends State<FeedScreen> {
+  final List<int> numbers = List.generate(8, (index) => index);
 
   @override
   Widget build(BuildContext context) {

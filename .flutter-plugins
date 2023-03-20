@@ -1,4 +1,12 @@
 # This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore-4.4.5/
+cloud_firestore_web=/Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.3.5/
+firebase_core=/Users/ho/.pub-cache/hosted/pub.dev/firebase_core-2.8.0/
+firebase_core_web=/Users/ho/.pub-cache/hosted/pub.dev/firebase_core_web-2.2.2/
+firebase_database=/Users/ho/.pub-cache/hosted/pub.dev/firebase_database-10.0.16/
+firebase_database_web=/Users/ho/.pub-cache/hosted/pub.dev/firebase_database_web-0.2.1+25/
+firebase_storage=/Users/ho/.pub-cache/hosted/pub.dev/firebase_storage-11.0.16/
+firebase_storage_web=/Users/ho/.pub-cache/hosted/pub.dev/firebase_storage_web-3.3.25/
 flutter_plugin_android_lifecycle=/Users/ho/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.9/
 image_picker=/Users/ho/.pub-cache/hosted/pub.dev/image_picker-0.8.7/
 image_picker_android=/Users/ho/.pub-cache/hosted/pub.dev/image_picker_android-0.8.6+4/
