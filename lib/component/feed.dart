@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:with_wall/component/comment.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class Feed extends StatefulWidget {
   final int postNumber;
@@ -19,13 +20,31 @@ class _FeedState extends State<Feed> {
   Future<void>? _initializeVideoPlayerFuture;
   bool isFavorite = false;
 
+  void initPlayer() async {
+    final url = await getVideo();
+    controller = VideoPlayerController.network(url);
+    _initializeVideoPlayerFuture = controller!.initialize();
+    controller!.setLooping(true);
+
+    setState(() {});
+  }
+
+  Future<String> getVideo() async {
+    try {
+      final storageRef = FirebaseStorage.instance.ref();
+      final pathReference = storageRef.child("video/${widget.postNumber}.mp4");
+      String videoURL = await pathReference.getDownloadURL();
+      return videoURL;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return '';
+  }
+
   @override
   void initState() {
     super.initState();
-    controller = VideoPlayerController.asset(
-        'asset/vid/sample_${widget.postNumber}.mp4');
-    _initializeVideoPlayerFuture = controller!.initialize();
-    controller!.setLooping(true);
+    initPlayer();
   }
 
   @override

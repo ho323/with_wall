@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:with_wall/component/new_video.dart';
 import 'package:with_wall/const/colors.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class AddPostScreen extends StatelessWidget {
   const AddPostScreen({Key? key}) : super(key: key);
