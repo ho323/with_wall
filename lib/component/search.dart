@@ -7,19 +7,46 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white,
+        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+        height: 50,
+        decoration: BoxDecoration(
+          color: PRIMARY_COLOR,
         ),
-        color: PRIMARY_COLOR,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.search),
-        ],
-      ),
+        child: Row(
+          children: [
+            Flexible(
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "검색",
+                  icon: Icon(Icons.search),
+                ),
+                onChanged: (text){},
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (c) => SearchDetail())
+                  );
+                },
+              ),
+            ),
+          ],
+        )
+    );
+  }
+}
+
+class SearchDetail extends StatefulWidget {
+  const SearchDetail({Key? key}) : super(key: key);
+
+  @override
+  State<SearchDetail> createState() => _SearchPopUpState();
+}
+
+class _SearchPopUpState extends State<SearchDetail> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: Text("hello?\n"*10),
     );
   }
 }
