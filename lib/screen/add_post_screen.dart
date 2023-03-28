@@ -1,10 +1,38 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
-import 'package:with_wall/component/new_video.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:with_wall/const/colors.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:video_compress/video_compress.dart';
 
-class AddPostScreen extends StatelessWidget {
-  const AddPostScreen({Key? key}) : super(key: key);
+class AddPostScreen extends StatefulWidget {
+  AddPostScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AddPostScreen> createState() => _AddPostScreenState();
+}
+
+class _AddPostScreenState extends State<AddPostScreen> {
+  XFile? video;
+  Uint8List? thumbnail;
+
+  Future<void> _downscaleVideo(XFile vid) async {
+    MediaInfo? mediaInfo = await VideoCompress.compressVideo(
+      vid.path,
+      quality: VideoQuality.LowQuality,
+      deleteOrigin: true, // It's false by default
+    );
+  }
+
+  Future<Uint8List?> _loadThumbnail(XFile vid) async {
+    final thumbnail = await VideoCompress.getByteThumbnail(vid.path,
+        quality: 50, // default(100)
+        position: -1 // default(-1)
+        );
+    return thumbnail;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,66 +44,161 @@ class AddPostScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                '운동 기록',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+              Title(),
               SizedBox(height: 20),
-              AddNewVideo(),
+              AddVideo(),
               SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(Icons.place),
-                  Text('센터 위치 등록'),
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.circle),
-                  Text('난이도 선택'),
-                ],
-              ),
+              CenterLocation(),
+              PickLevelColor(),
               SizedBox(height: 10),
-              Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  border: Border.all(color: PRIMARY_COLOR, width: 3),
-                ),
-                child: Center(
-                  child: Text('FormField()'),
-                ),
-              ),
+              Diary(),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: PRIMARY_COLOR,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('취소'),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: PRIMARY_COLOR,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('저장'),
-                  ),
-                ],
-              ),
+              BottomButtons(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget Title() {
+    return Text(
+      '운동 기록',
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w900,
+      ),
+    );
+  }
+
+  Widget AddVideo() {
+    return Container(
+        height: 270,
+        decoration: BoxDecoration(
+          border: Border.all(color: PRIMARY_COLOR, width: 3.0),
+        ),
+        child: GestureDetector(
+          onTap: () async {
+            final video = await ImagePicker().pickVideo(
+              source: ImageSource.gallery,
+              maxDuration: Duration(seconds: 60),
+            );
+            if (video != null) {
+              thumbnail = await _loadThumbnail(video);
+              setState(() {
+                this.video = video;
+                _downscaleVideo(video);
+              });
+            }
+          },
+          child: thumbnail == null ? renderEmpty() : renderThumbnail(),
+        ));
+  }
+
+  Widget renderEmpty() {
+    return const Center(
+      child: Icon(
+        Icons.add_circle,
+        color: PRIMARY_COLOR,
+        size: 50.0,
+      ),
+    );
+  }
+
+  Widget renderThumbnail() {
+    if (thumbnail != null) {
+      return Container(
+        height: 270,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: MemoryImage(thumbnail!),
+          ),
+        ),
+      );
+    } else {
+      return const CircularProgressIndicator();
+    }
+  }
+
+  Widget CenterLocation() {
+    return Row(
+      children: [
+        Icon(Icons.place),
+        Text('센터 위치 등록'),
+      ],
+    );
+  }
+
+  Widget PickLevelColor() {
+    return Row(
+      children: [
+        Icon(Icons.circle),
+        Text('난이도 선택'),
+      ],
+    );
+  }
+
+  Widget Diary() {
+    return Container(
+      height: 150,
+      decoration: BoxDecoration(
+        border: Border.all(color: PRIMARY_COLOR, width: 3),
+      ),
+      child: Center(
+        child: Text('Diary'),
+      ),
+    );
+  }
+
+  Widget BottomButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: PRIMARY_COLOR,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text('취소'),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: PRIMARY_COLOR,
+          ),
+          onPressed: () {
+            if (this.video != null) {
+              uploadVideo(this.video!);
+              Navigator.of(context).pop();
+            } else {}
+          },
+          child: Text('저장'),
+        ),
+      ],
+    );
+  }
+
+  void uploadVideo(XFile vid) async {
+    String uploadFile = vid.path;
+    String s = uploadFile.split('.').last;
+    print(s);
+    String now = DateTime.now().toString().split('.')[0];
+    String filename = '$now.mp4';
+
+    final storageRef =
+        FirebaseStorage.instanceFor(
+            bucket: "gs://with-wall-ca104.appspot.com/").ref();
+    final mountainsRef = storageRef.child(filename);
+    final mountainVideoRef = storageRef.child("video/$filename");
+    assert(mountainsRef.name == mountainVideoRef.name);
+    assert(mountainsRef.fullPath != mountainVideoRef.fullPath);
+
+    print(mountainVideoRef);
+    try {
+      await mountainVideoRef.putFile(File(vid.path));
+    } catch (e) {
+      print(e);
+    }
   }
 }

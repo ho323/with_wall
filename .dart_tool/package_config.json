@@ -308,6 +308,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "video_compress",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/video_compress-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "video_player",
       "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/video_player-2.6.0",
       "packageUri": "lib/",
@@ -344,7 +350,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-20T16:21:50.147593Z",
+  "generated": "2023-03-28T17:05:59.779097Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

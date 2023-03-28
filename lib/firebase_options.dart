@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyATxbN8Gzfax-Ulfr12CyYjUe9jvWQBS3M',
-    appId: '1:758974218487:android:913b64d2294a3a610713f2',
-    messagingSenderId: '758974218487',
-    projectId: 'with-wall',
-    storageBucket: 'with-wall.appspot.com',
+    apiKey: 'AIzaSyAUWEWuZQTlZvh3mdn8ZYaCTEllJEhm-vI',
+    appId: '1:438571301808:android:d7028876ff68bf4583b475',
+    messagingSenderId: '438571301808',
+    projectId: 'with-wall-ca104',
+    storageBucket: 'with-wall-ca104.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAhJiF3kK_UrBdzTc5Xkdd3Mm-46KWZ3HI',
-    appId: '1:758974218487:ios:44e4e11f2afc851e0713f2',
-    messagingSenderId: '758974218487',
-    projectId: 'with-wall',
-    storageBucket: 'with-wall.appspot.com',
-    iosClientId: '758974218487-chke1nghft79rnftdf8tvu0tj8ilfd8u.apps.googleusercontent.com',
+    apiKey: 'AIzaSyA5Lx8c03Gi2nJvUou82pEcYLFBvNtXiHg',
+    appId: '1:438571301808:ios:22409fcbe360038f83b475',
+    messagingSenderId: '438571301808',
+    projectId: 'with-wall-ca104',
+    storageBucket: 'with-wall-ca104.appspot.com',
+    iosClientId: '438571301808-rjbd2u3ipj71rtrg9h49l6hvj1ill58h.apps.googleusercontent.com',
     iosBundleId: 'com.example.withWall',
   );
 }

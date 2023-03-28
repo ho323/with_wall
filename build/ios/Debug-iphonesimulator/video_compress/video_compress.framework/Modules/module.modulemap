@@ -1,0 +1,11 @@
+framework module video_compress {
+  umbrella header "video_compress-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module video_compress.Swift {
+  header "video_compress-Swift.h"
+  requires objc
+}
