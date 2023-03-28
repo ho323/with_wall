@@ -183,10 +183,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
     String uploadFile = vid.path;
     String s = uploadFile.split('.').last;
     print(s);
-    String now = DateTime.now().toString();
-    String filename = now + s;
+    String now = DateTime.now().toString().split('.')[0];
+    String filename = '$now.mp4';
 
-    final storageRef = FirebaseStorage.instanceFor(bucket: "gs://with-wall-ca104.appspot.com/").ref();
+    final storageRef =
+        FirebaseStorage.instanceFor(
+            bucket: "gs://with-wall-ca104.appspot.com/").ref();
     final mountainsRef = storageRef.child(filename);
     final mountainVideoRef = storageRef.child("video/$filename");
     assert(mountainsRef.name == mountainVideoRef.name);

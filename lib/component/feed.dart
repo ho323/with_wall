@@ -34,6 +34,11 @@ class _FeedState extends State<Feed> {
       final storageRef = FirebaseStorage.instanceFor(bucket: "gs://with-wall-ca104.appspot.com/").ref();
       final pathReference = storageRef.child("video/${widget.postNumber}.mp4");
       String videoURL = await pathReference.getDownloadURL();
+
+      print(widget.postNumber);
+      // final x = await storageRef.child("video/").listAll();
+      // print(x.items.length);
+
       return videoURL;
     } on FirebaseException catch (e) {
       print(e);
