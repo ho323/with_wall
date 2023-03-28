@@ -42,7 +42,7 @@ class _CenterInfoScreenState extends State<CenterInfoScreen> {
               flex: 15,
               child: ListView(
                 children: [
-                  CenterImg(),
+                  CenterImage(),
                   Text("main_img_url 참고해서 넣기", style: TextStyle(fontSize: 25),),
                   CenterInfo(),
                   CenterRecommendPost(),
@@ -56,8 +56,8 @@ class _CenterInfoScreenState extends State<CenterInfoScreen> {
   }
 }
 
-class CenterImg extends StatelessWidget {
-  const CenterImg({Key? key}) : super(key: key);
+class CenterImage extends StatelessWidget {
+  const CenterImage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
