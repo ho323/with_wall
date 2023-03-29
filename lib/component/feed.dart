@@ -4,10 +4,10 @@ import 'package:with_wall/component/comment.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class Feed extends StatefulWidget {
-  final int postNumber;
+  final int index;
 
   const Feed({
-    required this.postNumber,
+    required this.index,
     Key? key,
   }) : super(key: key);
 
@@ -17,39 +17,44 @@ class Feed extends StatefulWidget {
 
 class _FeedState extends State<Feed> {
   VideoPlayerController? controller;
-  Future<void>? _initializeVideoPlayerFuture;
   bool isFavorite = false;
 
-  void initPlayer() async {
-    final url = await getVideo();
+  initializeController() async {
+    final url = await getVideoUrl();
     controller = VideoPlayerController.network(url);
-    _initializeVideoPlayerFuture = controller!.initialize();
+    await controller!.initialize();
     controller!.setLooping(true);
 
     setState(() {});
   }
 
-  Future<String> getVideo() async {
-    try {
-      final storageRef = FirebaseStorage.instanceFor(bucket: "gs://with-wall-ca104.appspot.com/").ref();
-      final pathReference = storageRef.child("video/${widget.postNumber}.mp4");
-      String videoURL = await pathReference.getDownloadURL();
+  Future<String> getVideoUrl() async {
+      try {
+        int i = 0;
 
-      print(widget.postNumber);
-      // final x = await storageRef.child("video/").listAll();
-      // print(x.items.length);
+        final storageRef = FirebaseStorage.instanceFor(
+            bucket: "gs://with-wall-ca104.appspot.com/").ref();
+        final listVideo = await storageRef.child("video/").listAll();
+        final videoItems = listVideo.items;
+        final maxLength = videoItems.length;
+        widget.index < maxLength ? i = widget.index : i = maxLength -1;
+        final pathReference = videoItems[i];
 
-      return videoURL;
-    } on FirebaseException catch (e) {
-      print(e);
-    }
-    return '';
+        String videoURL = await pathReference.getDownloadURL();
+
+        print(i);
+
+        return videoURL;
+      } on FirebaseException catch (e) {
+        print(e);
+      }
+      return '';
   }
 
   @override
   void initState() {
     super.initState();
-    initPlayer();
+    initializeController();
   }
 
   @override
@@ -111,34 +116,29 @@ class _FeedState extends State<Feed> {
 
   Widget _RenderVideo(context) {
     bool isPlaying = false;
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 270,
-      child: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return GestureDetector(
-              onTap: () {
-                if (!isPlaying) {
-                  controller!.play();
-                  isPlaying = true;
-                } else {
-                  controller!.pause();
-                  isPlaying = false;
-                }
-              },
-              child: AspectRatio(
-                aspectRatio: controller!.value.aspectRatio,
-                child: VideoPlayer(controller!),
-              ),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-    );
+    if (controller != null){
+      return Container(
+        width: MediaQuery.of(context).size.width,
+        height: 270,
+        child: GestureDetector(
+          onTap: () {
+            if (!isPlaying) {
+              controller!.play();
+              isPlaying = true;
+            } else {
+              controller!.pause();
+              isPlaying = false;
+            }
+          },
+          child: AspectRatio(
+            aspectRatio: controller!.value.aspectRatio,
+            child: VideoPlayer(controller!),
+          ),
+        ),
+      );
+    } else {
+      return const Center(child: CircularProgressIndicator());
+    }
   }
 
   Widget _RenderBottom() {
