@@ -17,6 +17,7 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
   XFile? video;
   Uint8List? thumbnail;
+  String userId = 'ho';
 
   Future<void> _downscaleVideo(XFile vid) async {
     MediaInfo? mediaInfo = await VideoCompress.compressVideo(
@@ -28,10 +29,18 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   Future<Uint8List?> _loadThumbnail(XFile vid) async {
     final thumbnail = await VideoCompress.getByteThumbnail(vid.path,
-        quality: 50, // default(100)
+        quality: 100, // default(100)
         position: -1 // default(-1)
         );
     return thumbnail;
+  }
+
+  @override
+  void dispose() {
+    if(video != null) {
+      uploadVideo(video!);
+    }
+    super.dispose();
   }
 
   @override
@@ -168,8 +177,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
             backgroundColor: PRIMARY_COLOR,
           ),
           onPressed: () {
-            if (this.video != null) {
-              uploadVideo(this.video!);
+            if (video != null) {
               Navigator.of(context).pop();
             } else {}
           },
@@ -180,24 +188,22 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   void uploadVideo(XFile vid) async {
-    String uploadFile = vid.path;
-    String s = uploadFile.split('.').last;
-    print(s);
-    String now = DateTime.now().toString().split('.')[0];
-    String filename = '$now.mp4';
+    File file = File(vid.path);
+    DateTime now = DateTime.now();
+    String fileName = '${now.year}_${now.month}_${now.day}-'
+        '${now.hour}_${now.minute}_${now.second}-$userId.mp4';
 
-    final storageRef =
-        FirebaseStorage.instanceFor(
-            bucket: "gs://with-wall-ca104.appspot.com/").ref();
-    final mountainsRef = storageRef.child(filename);
-    final mountainVideoRef = storageRef.child("video/$filename");
+    final storageRef = FirebaseStorage.instanceFor(
+        bucket: "gs://with-wall-ca104.appspot.com/").ref();
+    final mountainsRef = storageRef.child(fileName);
+    final mountainVideoRef = storageRef.child("video/$fileName");
+
     assert(mountainsRef.name == mountainVideoRef.name);
     assert(mountainsRef.fullPath != mountainVideoRef.fullPath);
 
-    print(mountainVideoRef);
     try {
-      await mountainVideoRef.putFile(File(vid.path));
-    } catch (e) {
+      await mountainVideoRef.putFile(file);
+    } on FirebaseException catch (e) {
       print(e);
     }
   }

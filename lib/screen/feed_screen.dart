@@ -11,22 +11,21 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
+  int postNumber = 10;
 
-  final List<int> numbers = List.generate(8, (index) => index);
+  Future<void> getItems() async {
+    final storageRef =
+    FirebaseStorage.instanceFor(bucket: "gs://with-wall-ca104.appspot.com/")
+        .ref();
+    final listVideo = await storageRef.child("video/").listAll();
+    postNumber = listVideo.items.length;
+  }
 
-  // Future<void> initFeed() async {
-  //   final storageRef = FirebaseStorage.instanceFor(bucket: "gs://with-wall-ca104.appspot.com/video").ref();
-  //   final videoList = await storageRef.child("video/").listAll();
-  //   final videoItems = videoList.items;
-  //
-  //   print(videoItems);
-  // }
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   initFeed();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    getItems();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,32 +39,11 @@ class _FeedScreenState extends State<FeedScreen> {
               },
               child: ListView.builder(
                 physics: AlwaysScrollableScrollPhysics(),
-                itemCount: 4,
+                itemCount: postNumber,
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: numbers
-                        .map(
-                          (e) => Feed(
-                            postNumber: e,
-                          ),
-                        )
-                        .toList(),
-                  );
+                  return Feed(index: index);
                 },
               ),
-
-              // SingleChildScrollView(
-              //   physics: const AlwaysScrollableScrollPhysics(),
-              //   child: Column(
-              //     children: numbers
-              //         .map(
-              //           (e) => Feed(
-              //             postNumber: e,
-              //           ),
-              //         )
-              //         .toList(),
-              //   ),
-              // ),
             ),
           ),
         ],
