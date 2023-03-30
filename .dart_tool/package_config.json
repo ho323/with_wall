@@ -242,6 +242,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/path-1.8.2",
       "packageUri": "lib/",
@@ -252,6 +258,12 @@
       "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/provider-6.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -350,7 +362,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-29T17:32:46.944449Z",
+  "generated": "2023-03-30T19:54:11.388523Z",
   "generator": "pub",
-  "generatorVersion": "2.19.2"
+  "generatorVersion": "2.19.6"
 }

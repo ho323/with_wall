@@ -19,30 +19,29 @@ class _FeedState extends State<Feed> {
   VideoPlayerController? controller;
   bool isFavorite = false;
 
-  initializeController() async {
+  void initializeController() async {
     final url = await getVideoUrl();
-    controller = VideoPlayerController.network(url);
-    await controller!.initialize();
-    controller!.setLooping(true);
+    if(url != '') {
+      controller = VideoPlayerController.network(url);
+      await controller!.initialize();
+      controller!.setLooping(true);
 
-    setState(() {});
+    }
+    if(mounted){
+      setState(() {});
+    }
   }
 
   Future<String> getVideoUrl() async {
       try {
-        int i = 0;
-
         final storageRef = FirebaseStorage.instanceFor(
             bucket: "gs://with-wall-ca104.appspot.com/").ref();
         final listVideo = await storageRef.child("video/").listAll();
         final videoItems = listVideo.items;
-        final maxLength = videoItems.length;
-        widget.index < maxLength ? i = widget.index : i = maxLength -1;
-        final pathReference = videoItems[i];
+        final pathReference = videoItems[widget.index];
+        print(widget.index);
 
         String videoURL = await pathReference.getDownloadURL();
-
-        print(i);
 
         return videoURL;
       } on FirebaseException catch (e) {
@@ -59,7 +58,9 @@ class _FeedState extends State<Feed> {
 
   @override
   void dispose() {
-    controller!.dispose();
+    if(controller != null) {
+      controller!.dispose();
+    }
     super.dispose();
   }
 
