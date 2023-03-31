@@ -36,14 +36,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   @override
-  void dispose() {
-    if(video != null) {
-      uploadVideo(video!);
-    }
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -178,6 +170,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           ),
           onPressed: () {
             if (video != null) {
+              uploadVideo(video!);
               Navigator.of(context).pop();
             } else {}
           },
@@ -188,10 +181,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   void uploadVideo(XFile vid) async {
-    File file = File(vid.path);
-    DateTime now = DateTime.now();
-    String fileName = '${now.year}_${now.month}_${now.day}-'
-        '${now.hour}_${now.minute}_${now.second}-$userId.mp4';
+    final file = File(vid.path);
+    DateTime now = DateTime.now().add(Duration(hours: 9));  // KR utc +9
+    String fileName = "${now.year}_${now.month}_${now.day}-"
+        "${now.hour}_${now.minute}_${now.second}-$userId.mp4";
 
     final storageRef = FirebaseStorage.instanceFor(
         bucket: "gs://with-wall-ca104.appspot.com/").ref();
@@ -203,6 +196,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
     try {
       await mountainVideoRef.putFile(file);
+      print("upload! $file");
     } on FirebaseException catch (e) {
       print(e);
     }

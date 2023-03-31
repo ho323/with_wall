@@ -19,36 +19,34 @@ class _FeedState extends State<Feed> {
   VideoPlayerController? controller;
   bool isFavorite = false;
 
-  initializeController() async {
+  void initializeController() async {
     final url = await getVideoUrl();
     controller = VideoPlayerController.network(url);
     await controller!.initialize();
     controller!.setLooping(true);
-
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<String> getVideoUrl() async {
-      try {
-        int i = 0;
+    try {
+      final storageRef = FirebaseStorage.instanceFor(
+              bucket: "gs://with-wall-ca104.appspot.com/")
+          .ref();
+      final listVideo = await storageRef.child("video/").listAll();
+      final videoItems = listVideo.items;
+      videoItems.sort((b, a) => a.toString().compareTo(b.toString()));
+      final pathReference = videoItems[widget.index];
+      print(widget.index);
 
-        final storageRef = FirebaseStorage.instanceFor(
-            bucket: "gs://with-wall-ca104.appspot.com/").ref();
-        final listVideo = await storageRef.child("video/").listAll();
-        final videoItems = listVideo.items;
-        final maxLength = videoItems.length;
-        widget.index < maxLength ? i = widget.index : i = maxLength -1;
-        final pathReference = videoItems[i];
+      String videoURL = await pathReference.getDownloadURL();
 
-        String videoURL = await pathReference.getDownloadURL();
-
-        print(i);
-
-        return videoURL;
-      } on FirebaseException catch (e) {
-        print(e);
-      }
-      return '';
+      return videoURL;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return '';
   }
 
   @override
@@ -59,7 +57,9 @@ class _FeedState extends State<Feed> {
 
   @override
   void dispose() {
-    controller!.dispose();
+    if (controller != null) {
+      controller!.dispose();
+    }
     super.dispose();
   }
 
@@ -116,7 +116,7 @@ class _FeedState extends State<Feed> {
 
   Widget _RenderVideo(context) {
     bool isPlaying = false;
-    if (controller != null){
+    if (controller != null) {
       return Container(
         width: MediaQuery.of(context).size.width,
         height: 270,
