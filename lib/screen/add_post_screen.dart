@@ -182,7 +182,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
   void uploadVideo(XFile vid) async {
     final file = File(vid.path);
-    DateTime now = DateTime.now();
+    DateTime now = DateTime.now().add(Duration(hours: 9));  // KR utc +9
     String fileName = "${now.year}_${now.month}_${now.day}-"
         "${now.hour}_${now.minute}_${now.second}-$userId.mp4";
 

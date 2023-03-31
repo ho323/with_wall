@@ -21,33 +21,32 @@ class _FeedState extends State<Feed> {
 
   void initializeController() async {
     final url = await getVideoUrl();
-    if(url != '') {
-      controller = VideoPlayerController.network(url);
-      await controller!.initialize();
-      controller!.setLooping(true);
-
-    }
-    if(mounted){
+    controller = VideoPlayerController.network(url);
+    await controller!.initialize();
+    controller!.setLooping(true);
+    if (mounted) {
       setState(() {});
     }
   }
 
   Future<String> getVideoUrl() async {
-      try {
-        final storageRef = FirebaseStorage.instanceFor(
-            bucket: "gs://with-wall-ca104.appspot.com/").ref();
-        final listVideo = await storageRef.child("video/").listAll();
-        final videoItems = listVideo.items;
-        final pathReference = videoItems[widget.index];
-        print(widget.index);
+    try {
+      final storageRef = FirebaseStorage.instanceFor(
+              bucket: "gs://with-wall-ca104.appspot.com/")
+          .ref();
+      final listVideo = await storageRef.child("video/").listAll();
+      final videoItems = listVideo.items;
+      videoItems.sort((b, a) => a.toString().compareTo(b.toString()));
+      final pathReference = videoItems[widget.index];
+      print(widget.index);
 
-        String videoURL = await pathReference.getDownloadURL();
+      String videoURL = await pathReference.getDownloadURL();
 
-        return videoURL;
-      } on FirebaseException catch (e) {
-        print(e);
-      }
-      return '';
+      return videoURL;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return '';
   }
 
   @override
@@ -58,7 +57,7 @@ class _FeedState extends State<Feed> {
 
   @override
   void dispose() {
-    if(controller != null) {
+    if (controller != null) {
       controller!.dispose();
     }
     super.dispose();
@@ -117,7 +116,7 @@ class _FeedState extends State<Feed> {
 
   Widget _RenderVideo(context) {
     bool isPlaying = false;
-    if (controller != null){
+    if (controller != null) {
       return Container(
         width: MediaQuery.of(context).size.width,
         height: 270,
