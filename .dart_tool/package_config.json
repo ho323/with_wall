@@ -3,9 +3,9 @@
   "packages": [
     {
       "name": "_flutterfire_internals",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.0.18",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "async",
@@ -33,21 +33,21 @@
     },
     {
       "name": "cloud_firestore",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore-4.4.5",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore-4.5.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "cloud_firestore_platform_interface",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore_platform_interface-5.11.5",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore_platform_interface-5.12.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "cloud_firestore_web",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.3.5",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "collection",
@@ -81,21 +81,21 @@
     },
     {
       "name": "firebase_core",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core-2.8.0",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core-2.9.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_core_platform_interface",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-4.5.3",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-4.6.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_core_web",
-      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core_web-2.2.2",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/firebase_core_web-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.18"
     },
     {
       "name": "firebase_database",
@@ -212,6 +212,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/intl-0.18.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
@@ -266,6 +272,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "simple_gesture_detector",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/simple_gesture_detector-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/ho/opt/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -294,6 +306,12 @@
       "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "table_calendar",
+      "rootUri": "file:///Users/ho/.pub-cache/hosted/pub.dev/table_calendar-3.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "term_glyph",
@@ -362,7 +380,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-30T19:54:11.388523Z",
+  "generated": "2023-03-31T14:38:29.610649Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
