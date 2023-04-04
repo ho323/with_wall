@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/video_compress-Swift.h</key>
 		<data>
-		/H7aN6NW8+TmHj6LUCFe8f/H/sg=
+		63twiiENnAHFLQR6XE4AjRTlkXk=
 		</data>
 		<key>Headers/video_compress-umbrella.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		xNizYuNP7CwIEQYuNSSPQ6d1fsY=
+		t8WAfUcnRO8inacVX5gRrgEFHIA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/video_compress.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		YIXan/gx0iPTCw7+Wzmh8OQAbB8=
+		H2Ftw+ZtKKA9mRVlXj4RHz87wrI=
 		</data>
 		<key>Modules/video_compress.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		cF5DSGZGSUBWUSoeNNbxEem1NDY=
+		oeLQcaPDkwcWMzBhY1IdQ98o4RM=
 		</data>
 		<key>Modules/video_compress.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/video_compress.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		rFOESAMB8nWX70NRxS2EA8damt8=
+		kFxzNhMkUAHENNQofRccje9BKpU=
 		</data>
 		<key>Modules/video_compress.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gkF3LVOJmHRvTDkoAs8ySQbME0I=
+		ls31FMEGINEY0UCVdo7BOBkWUsg=
 		</data>
 		<key>Modules/video_compress.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/video_compress.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		nQGukY0MSo1RiNN7yTdEeh1gnvk=
+		8iom3O5HNyMaYgcekMXM/kq5VxY=
 		</data>
 		<key>Modules/video_compress.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		rCEXclw1IpEALi3+d9B77zhfTRQ=
+		jNtQj7CXRlZS5aVRijVKaS8lgnU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PHabdEh7jtNSStoSTe1oSzzQKyjCU0Q50iGh40S99Dw=
+			sR/NQsMI8XAve3ca038mt9C3QBc8hkeDPNA855cr4Ic=
 			</data>
 		</dict>
 		<key>Headers/video_compress-umbrella.h</key>
@@ -91,14 +91,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xji4Ns7hBmu8bkugoiHK+rW2U9u/lGL5dTQArvrKtZo=
+			xsw/HH6F2TyYw4KRlctkEKipWW8s3Ak58syJV2Ye9Mo=
 			</data>
 		</dict>
 		<key>Modules/video_compress.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YfCEwuxib8cqV32nofOLMED+ioALo1YLMmllJDq73+o=
+			3O9WKFNsK054CO4RLnorK3hkl6ZH2sK4wagQ5C6X6Mg=
 			</data>
 		</dict>
 		<key>Modules/video_compress.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -112,14 +112,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VG/M+hFWtOVDEP3HHaqigABjTRP4r6w70/AJfDIwFPI=
+			/hI+Pp+DvPPJXtvUAChN/22frYql72a3rtcKEYEYJbc=
 			</data>
 		</dict>
 		<key>Modules/video_compress.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4UYriAHrDs1crtQCC2KyPygl7Fngq+P/gIdtWdeyxJQ=
+			C6S8QCZvFDOBJWXNoC0SRVnhLOmpdEl4P1IjWh3UqIk=
 			</data>
 		</dict>
 		<key>Modules/video_compress.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -133,14 +133,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			O9YJHLoT6M7cG1lU7Pk60Ber/29CNMMMsLy/rxUaUi4=
+			sztSuSmQKl0EXdrczyWbiMHPQuXJcI2VJzllA1/VHU4=
 			</data>
 		</dict>
 		<key>Modules/video_compress.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OCSKFNEgRj9w3C+mc6ss1I/0DaQtosSmc2HsCGKdkKs=
+			yA2Ya65GfNPRmfIdlmI8JrVIjtyIdV9wlxTgst5L9cQ=
 			</data>
 		</dict>
 	</dict>
